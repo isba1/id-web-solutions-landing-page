@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start Your Build — ID Web Solutions</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #111827;
+      color: #f9fafb;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      background: #1f2937;
+      border-bottom: 1px solid #374151;
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .site-header .home-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .site-header img { height: 40px; width: auto; }
+    .site-header .brand { font-size: 1.1rem; font-weight: 600; color: #f9fafb; }
+    .header-nav { margin-left: auto; display: flex; gap: 20px; align-items: center; }
+    .header-nav a { color: #9ca3af; text-decoration: none; font-size: 0.875rem; transition: color 0.15s; }
+    .header-nav a:hover { color: #C8922A; }
+
+    /* ── Main ── */
+    main {
+      flex: 1;
+      max-width: 820px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .page-intro { margin-bottom: 36px; }
+    .page-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .page-intro p { color: #9ca3af; font-size: 1rem; line-height: 1.65; }
+
+    /* ── Section cards ── */
+    .form-section {
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+    .form-section > h2 {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #C8922A;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #374151;
+    }
+
+    /* ── Fields ── */
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #9ca3af;
+    }
+    .opt { font-weight: 400; text-transform: none; letter-spacing: 0; color: #4b5563; font-size: 0.68rem; margin-left: 4px; }
+
+    .field input,
+    .field textarea,
+    .field select {
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #f9fafb;
+      font-size: 0.9rem;
+      font-family: inherit;
+      width: 100%;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      outline: none;
+      border-color: #C8922A;
+      box-shadow: 0 0 0 2px rgba(200,146,42,0.15);
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: #374151; }
+    .field select option { background: #1f2937; }
+    .field textarea { resize: vertical; min-height: 90px; }
+
+    /* ── Layout helpers ── */
+    .stack { display: flex; flex-direction: column; gap: 16px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+    /* ── Services ── */
+    .svc-col-labels {
+      display: grid;
+      grid-template-columns: 1fr 2fr 34px;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .svc-col-labels span {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #4b5563;
+    }
+    .svc-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr 34px;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .svc-row input {
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #f9fafb;
+      font-size: 0.9rem;
+      font-family: inherit;
+      width: 100%;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .svc-row input:focus {
+      outline: none;
+      border-color: #C8922A;
+      box-shadow: 0 0 0 2px rgba(200,146,42,0.15);
+    }
+    .svc-row input::placeholder { color: #374151; }
+    .svc-remove {
+      background: none;
+      border: 1px solid #374151;
+      border-radius: 6px;
+      color: #6b7280;
+      cursor: pointer;
+      width: 34px;
+      height: 38px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .svc-remove:hover { border-color: #ef4444; color: #ef4444; }
+    .svc-remove:disabled { opacity: 0.25; cursor: default; border-color: #374151; color: #374151; }
+    .add-svc-btn {
+      background: none;
+      border: 1px dashed #374151;
+      border-radius: 8px;
+      color: #6b7280;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      font-size: 0.875rem;
+      font-family: inherit;
+      text-align: center;
+      margin-top: 4px;
+      transition: all 0.15s;
+    }
+    .add-svc-btn:hover:not(:disabled) { border-color: #C8922A; color: #C8922A; }
+    .add-svc-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ── Hours ── */
+    .hours-col-labels {
+      display: grid;
+      grid-template-columns: 100px 76px 1fr 14px 1fr;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .hours-col-labels span {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #4b5563;
+    }
+    .hours-row {
+      display: grid;
+      grid-template-columns: 100px 76px 1fr 14px 1fr;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .hours-row .day-name { font-size: 0.875rem; font-weight: 600; color: #f9fafb; }
+    .closed-lbl {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      cursor: pointer;
+      user-select: none;
+    }
+    .closed-lbl input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      accent-color: #C8922A;
+      cursor: pointer;
+    }
+    .hours-row input[type="time"] {
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 6px;
+      padding: 7px 10px;
+      color: #f9fafb;
+      font-size: 0.85rem;
+      font-family: inherit;
+      width: 100%;
+      transition: border-color 0.15s;
+    }
+    .hours-row input[type="time"]:focus { outline: none; border-color: #C8922A; }
+    .hours-row input[type="time"]:disabled { opacity: 0.3; cursor: not-allowed; }
+    .hours-sep { color: #4b5563; text-align: center; font-size: 0.85rem; }
+
+    /* ── Submit ── */
+    .submit-btn {
+      background: #C8922A;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 15px 24px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      width: 100%;
+      cursor: pointer;
+      margin-top: 8px;
+      letter-spacing: 0.01em;
+      transition: background 0.15s, opacity 0.15s;
+    }
+    .submit-btn:hover:not(:disabled) { background: #b57d22; }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* ── Success / Error ── */
+    .success-box {
+      background: #052e16;
+      border: 1px solid #166534;
+      border-radius: 12px;
+      padding: 48px 32px;
+      text-align: center;
+      display: none;
+    }
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      background: #166534;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin: 0 auto 18px;
+      color: #4ade80;
+    }
+    .success-box h2 { font-size: 1.5rem; color: #4ade80; margin-bottom: 10px; }
+    .success-box p { color: #9ca3af; font-size: 0.95rem; line-height: 1.65; }
+
+    .error-box {
+      background: rgba(127,29,29,0.3);
+      border: 1px solid #7f1d1d;
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #fca5a5;
+      font-size: 0.875rem;
+      margin-top: 12px;
+      display: none;
+    }
+    .error-box a { color: #fca5a5; font-weight: 600; }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: #1f2937;
+      border-top: 1px solid #374151;
+      padding: 18px 40px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      font-size: 0.875rem;
+    }
+    .site-footer a { color: #9ca3af; text-decoration: none; }
+    .site-footer a:hover { color: #C8922A; }
+    .site-footer .copy { margin-left: auto; color: #4b5563; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .site-header { padding: 14px 18px; }
+      .form-section { padding: 20px 16px; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .svc-col-labels { display: none; }
+      .svc-row { grid-template-columns: 1fr 34px; }
+      .svc-row input:last-of-type { grid-column: 1; }
+      .hours-col-labels { display: none; }
+      .hours-row { grid-template-columns: 80px 70px 1fr 10px 1fr; gap: 6px; }
+      .hours-row .day-name { font-size: 0.8rem; }
+      .site-footer { padding: 18px; flex-wrap: wrap; }
+      .site-footer .copy { margin-left: 0; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="home-link">
+      <img src="ID_Web_Solutions_Logo.png" alt="ID Web Solutions" />
+      <span class="brand">ID Web Solutions</span>
+    </a>
+    <nav class="header-nav">
+      <a href="/">← Back to home</a>
+      <!-- TODO: replace # with your actual dashboard URL once deployed -->
+      <a href="#">Client Dashboard →</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-intro">
+      <h1>Start Your Website Build</h1>
+      <p>Fill out the form below and we'll get your site started. We'll review your submission and follow up within 1 business day.</p>
+    </div>
+
+    <!--
+      FORMSPREE SETUP:
+        1. Go to formspree.io → New Form → point to marinishaan@gmail.com
+        2. Copy the form ID from the endpoint URL (e.g. "xwkgpqrz")
+        3. Replace YOUR_FORM_ID in the fetch() call at the bottom of this file
+    -->
+    <form id="onboarding-form" novalidate>
+
+      <!-- Formspree control fields — values set by JS before submit -->
+      <input  type="hidden"   name="_subject"       id="f-subject"  value="New Website Build Request" />
+      <input  type="hidden"   name="_replyto"       id="f-replyto"  value="" />
+      <textarea               name="Services"       id="f-services" style="display:none"></textarea>
+      <textarea               name="Business Hours" id="f-hours"    style="display:none"></textarea>
+      <textarea               name="Scaffold Command" id="f-scaffold" style="display:none"></textarea>
+
+      <!-- ── 1 · Business Basics ── -->
+      <div class="form-section">
+        <h2>1 — Business Basics</h2>
+        <div class="stack">
+          <div class="grid-2">
+            <div class="field">
+              <label for="f-biz-name">Business Name *</label>
+              <input type="text" id="f-biz-name" name="Business Name" required
+                placeholder="Smith Plumbing LLC" />
+            </div>
+            <div class="field">
+              <label for="f-industry">Industry / Business Type *</label>
+              <input type="text" id="f-industry" name="Industry" required
+                placeholder="e.g. Plumbing, Real Estate, Landscaping" />
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label for="f-email">Business Email *</label>
+              <input type="email" id="f-email" name="Business Email" required
+                placeholder="contact@smithplumbing.com" />
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone Number *</label>
+              <input type="tel" id="f-phone" name="Phone" required
+                placeholder="(408) 555-0100" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-domain">Website Domain *</label>
+            <input type="text" id="f-domain" name="Domain" required
+              placeholder="e.g. smithplumbing.com — no https://" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 2 · Location ── -->
+      <div class="form-section">
+        <h2>2 — Location</h2>
+        <div class="stack">
+          <div class="field">
+            <label for="f-address">Street Address *</label>
+            <input type="text" id="f-address" name="Street Address" required
+              placeholder="123 Main St" />
+          </div>
+          <div class="grid-3">
+            <div class="field">
+              <label for="f-city">City *</label>
+              <input type="text" id="f-city" name="City" required placeholder="San Jose" />
+            </div>
+            <div class="field">
+              <label for="f-state">State *</label>
+              <input type="text" id="f-state" name="State" required placeholder="CA"
+                maxlength="2" oninput="this.value = this.value.toUpperCase()" />
+            </div>
+            <div class="field">
+              <label for="f-zip">ZIP *</label>
+              <input type="text" id="f-zip" name="ZIP" required
+                placeholder="95101" maxlength="10" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-areas">Service Areas
+              <span class="opt">(optional — beyond your primary location)</span>
+            </label>
+            <textarea id="f-areas" name="Service Areas"
+              placeholder="San Jose CA&#10;Santa Clara CA&#10;Sunnyvale CA&#10;(one city + 2-letter state per line)"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 3 · Services ── -->
+      <div class="form-section">
+        <h2>3 — Services</h2>
+        <div class="svc-col-labels">
+          <span>Service Name</span>
+          <span>Short Description</span>
+          <span></span>
+        </div>
+        <div id="svc-container"></div>
+        <button type="button" id="add-svc-btn" class="add-svc-btn" onclick="addService()">
+          + Add another service
+        </button>
+      </div>
+
+      <!-- ── 4 · Website Content ── -->
+      <div class="form-section">
+        <h2>4 — Website Content</h2>
+        <div class="stack">
+          <div class="field">
+            <label for="f-hero-h1">Hero Headline / Tagline *</label>
+            <input type="text" id="f-hero-h1" name="Hero Headline" required
+              placeholder="e.g. Fast, reliable plumbing when you need it most" />
+          </div>
+          <div class="field">
+            <label for="f-hero-sub">Hero Subtext *</label>
+            <input type="text" id="f-hero-sub" name="Hero Subtext" required
+              placeholder="e.g. Serving San Jose and the South Bay since 2010." />
+          </div>
+          <div class="field">
+            <label for="f-about">About Paragraph *</label>
+            <textarea id="f-about" name="About" required style="min-height:120px"
+              placeholder="Tell us about your business, how long you've been operating, what makes you different."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 5 · Hours & Social ── -->
+      <div class="form-section">
+        <h2>5 — Hours &amp; Social</h2>
+        <div class="stack">
+
+          <div>
+            <div class="field" style="margin-bottom:10px">
+              <label>Business Hours</label>
+            </div>
+            <div class="hours-col-labels">
+              <span>Day</span>
+              <span></span>
+              <span>Opens</span>
+              <span></span>
+              <span>Closes</span>
+            </div>
+            <div id="hours-grid"></div>
+          </div>
+
+          <div class="field">
+            <label for="f-tz">Timezone *</label>
+            <select id="f-tz" name="Timezone">
+              <option value="America/Los_Angeles">Pacific Time — America/Los_Angeles</option>
+              <option value="America/Denver">Mountain Time — America/Denver</option>
+              <option value="America/Chicago">Central Time — America/Chicago</option>
+              <option value="America/New_York">Eastern Time — America/New_York</option>
+            </select>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="f-instagram">Instagram <span class="opt">(optional)</span></label>
+              <input type="url" id="f-instagram" name="Instagram"
+                placeholder="https://instagram.com/yourbusiness" />
+            </div>
+            <div class="field">
+              <label for="f-facebook">Facebook <span class="opt">(optional)</span></label>
+              <input type="url" id="f-facebook" name="Facebook"
+                placeholder="https://facebook.com/yourbusiness" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="error-box" class="error-box">
+        Something went wrong — please email
+        <a href="mailto:marinishaan@gmail.com">marinishaan@gmail.com</a> directly.
+      </div>
+
+      <button type="submit" id="submit-btn" class="submit-btn">
+        Submit onboarding request →
+      </button>
+    </form>
+
+    <div id="success-box" class="success-box">
+      <div class="success-icon">✓</div>
+      <h2>Request received!</h2>
+      <p>We'll review your details and reach out within 1 business day to confirm next steps.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <span class="copy">&copy; 2026 ID Web Solutions. All rights reserved.</span>
+  </footer>
+
+  <script>
+    /* ── Services ────────────────────────────────────── */
+    const MAX_SVC = 6;
+    let svcCount = 0;
+
+    function addService(name, desc) {
+      if (svcCount >= MAX_SVC) return;
+      svcCount++;
+      const row = document.createElement('div');
+      row.className = 'svc-row';
+      row.innerHTML =
+        '<input type="text" class="svc-name" placeholder="e.g. Junk Removal" />' +
+        '<input type="text" class="svc-desc" placeholder="e.g. Fast, same-day junk removal for homes and businesses" />' +
+        '<button type="button" class="svc-remove" onclick="removeService(this)" title="Remove">&#10005;</button>';
+      if (name) row.querySelector('.svc-name').value = name;
+      if (desc) row.querySelector('.svc-desc').value = desc;
+      document.getElementById('svc-container').appendChild(row);
+      syncSvcUI();
+    }
+
+    function removeService(btn) {
+      btn.closest('.svc-row').remove();
+      svcCount--;
+      syncSvcUI();
+    }
+
+    function syncSvcUI() {
+      const rows = document.querySelectorAll('.svc-row');
+      rows.forEach(r => { r.querySelector('.svc-remove').disabled = rows.length <= 1; });
+      const btn = document.getElementById('add-svc-btn');
+      btn.disabled = svcCount >= MAX_SVC;
+      btn.textContent = svcCount >= MAX_SVC
+        ? 'Maximum ' + MAX_SVC + ' services reached'
+        : '+ Add another service (' + svcCount + '/' + MAX_SVC + ')';
+    }
+
+    addService();
+    addService();
+
+    /* ── Hours ───────────────────────────────────────── */
+    const DAYS = [
+      { key: 'mon', label: 'Monday',    open: '09:00', close: '17:00', closed: false },
+      { key: 'tue', label: 'Tuesday',   open: '09:00', close: '17:00', closed: false },
+      { key: 'wed', label: 'Wednesday', open: '09:00', close: '17:00', closed: false },
+      { key: 'thu', label: 'Thursday',  open: '09:00', close: '17:00', closed: false },
+      { key: 'fri', label: 'Friday',    open: '09:00', close: '17:00', closed: false },
+      { key: 'sat', label: 'Saturday',  open: '09:00', close: '13:00', closed: false },
+      { key: 'sun', label: 'Sunday',    open: '09:00', close: '17:00', closed: true  },
+    ];
+
+    (function initHours() {
+      var grid = document.getElementById('hours-grid');
+      DAYS.forEach(function(d) {
+        var row = document.createElement('div');
+        row.className = 'hours-row';
+        row.innerHTML =
+          '<span class="day-name">' + d.label + '</span>' +
+          '<label class="closed-lbl">' +
+            '<input type="checkbox" id="hr-closed-' + d.key + '"' + (d.closed ? ' checked' : '') +
+              ' onchange="toggleDay(\'' + d.key + '\')" /> Closed' +
+          '</label>' +
+          '<input type="time" id="hr-open-'  + d.key + '" value="' + d.open  + '"' + (d.closed ? ' disabled' : '') + ' />' +
+          '<span class="hours-sep">&#8211;</span>' +
+          '<input type="time" id="hr-close-' + d.key + '" value="' + d.close + '"' + (d.closed ? ' disabled' : '') + ' />';
+        grid.appendChild(row);
+      });
+    })();
+
+    function toggleDay(key) {
+      var closed = document.getElementById('hr-closed-' + key).checked;
+      document.getElementById('hr-open-'  + key).disabled = closed;
+      document.getElementById('hr-close-' + key).disabled = closed;
+    }
+
+    /* ── Scaffold helpers ────────────────────────────── */
+    function shellEsc(str) {
+      return String(str || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, ' ').trim();
+    }
+
+    function parseAreas(raw) {
+      return raw.split('\n')
+        .map(function(l) { return l.trim(); })
+        .filter(Boolean)
+        .map(function(line) {
+          var m = line.match(/^(.+?)[\s,]+([A-Za-z]{2})$/);
+          return m ? m[1].trim() + ',' + m[2].toUpperCase() : line.replace(/,\s+/g, ',');
+        })
+        .join('|');
+    }
+
+    function buildHoursStr() {
+      var WD = ['mon','tue','wed','thu','fri'];
+      var open = DAYS.filter(function(d) {
+        return !document.getElementById('hr-closed-' + d.key).checked;
+      }).map(function(d) {
+        return {
+          key:   d.key,
+          open:  document.getElementById('hr-open-'  + d.key).value,
+          close: document.getElementById('hr-close-' + d.key).value,
+        };
+      });
+
+      var wdOpen = open.filter(function(d) { return WD.indexOf(d.key) !== -1; });
+      if (wdOpen.length === 5) {
+        var first = wdOpen[0];
+        var allSame = wdOpen.every(function(d) { return d.open === first.open && d.close === first.close; });
+        if (allSame) {
+          var parts = ['mon-fri:' + first.open + '-' + first.close];
+          open.filter(function(d) { return WD.indexOf(d.key) === -1; })
+              .forEach(function(d) { parts.push(d.key + ':' + d.open + '-' + d.close); });
+          return parts.join(',');
+        }
+      }
+
+      return open.map(function(d) { return d.key + ':' + d.open + '-' + d.close; }).join(',');
+    }
+
+    function buildServicesFormatted() {
+      var rows = document.querySelectorAll('.svc-row');
+      var lines = [];
+      rows.forEach(function(row, i) {
+        var name = row.querySelector('.svc-name').value.trim();
+        var desc = row.querySelector('.svc-desc').value.trim();
+        if (name) lines.push((i + 1) + '. ' + name + (desc ? ': ' + desc : ''));
+      });
+      return lines.join('\n');
+    }
+
+    function buildServicesArg() {
+      var pairs = [];
+      document.querySelectorAll('.svc-row').forEach(function(row) {
+        var name = row.querySelector('.svc-name').value.trim();
+        var desc = row.querySelector('.svc-desc').value.trim();
+        if (name) { pairs.push(shellEsc(name)); pairs.push(shellEsc(desc)); }
+      });
+      return pairs.join('|');
+    }
+
+    function buildScaffold() {
+      var name    = document.getElementById('f-biz-name').value;
+      var email   = document.getElementById('f-email').value;
+      var phone   = document.getElementById('f-phone').value;
+      var address = document.getElementById('f-address').value;
+      var city    = document.getElementById('f-city').value;
+      var state   = document.getElementById('f-state').value;
+      var zip     = document.getElementById('f-zip').value;
+      var domain  = document.getElementById('f-domain').value
+                      .replace(/^https?:\/\//i, '').replace(/\/+$/, '');
+      var areas   = parseAreas(document.getElementById('f-areas').value);
+      var heroH1  = document.getElementById('f-hero-h1').value;
+      var heroSub = document.getElementById('f-hero-sub').value;
+      var about   = document.getElementById('f-about').value;
+      var hours   = buildHoursStr();
+      var tz      = document.getElementById('f-tz').value;
+      var ig      = document.getElementById('f-instagram').value;
+      var fb      = document.getElementById('f-facebook').value;
+      var svcs    = buildServicesArg();
+
+      return [
+        'npm run scaffold -- \\',
+        '  --name "'       + shellEsc(name)    + '" \\',
+        '  --email "'      + shellEsc(email)   + '" \\',
+        '  --phone "'      + shellEsc(phone)   + '" \\',
+        '  --address "'    + shellEsc(address) + '" \\',
+        '  --city "'       + shellEsc(city)    + '" \\',
+        '  --state "'      + shellEsc(state)   + '" \\',
+        '  --zip "'        + shellEsc(zip)     + '" \\',
+        '  --baseUrl "'    + shellEsc(domain)  + '" \\',
+        '  --serviceAreas "' + areas           + '" \\',
+        '  --services "'   + svcs              + '" \\',
+        '  --heroH1 "'     + shellEsc(heroH1)  + '" \\',
+        '  --heroSub "'    + shellEsc(heroSub) + '" \\',
+        '  --about "'      + shellEsc(about)   + '" \\',
+        '  --hours "'      + hours             + '" \\',
+        '  --timezone "'   + tz                + '" \\',
+        '  --instagram "'  + shellEsc(ig)      + '" \\',
+        '  --facebook "'   + shellEsc(fb)      + '"',
+      ].join('\n');
+    }
+
+    /* ── Form submission ─────────────────────────────── */
+    document.getElementById('onboarding-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Stop on first missing required field
+      var missing = Array.from(this.querySelectorAll('[required]')).find(function(el) {
+        return !el.value.trim();
+      });
+      if (missing) { missing.focus(); return; }
+
+      var btn      = document.getElementById('submit-btn');
+      var errorBox = document.getElementById('error-box');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+      errorBox.style.display = 'none';
+
+      // Populate control + hidden fields
+      var bizName = document.getElementById('f-biz-name').value.trim();
+      document.getElementById('f-subject').value  = 'New Website Build Request: ' + bizName;
+      document.getElementById('f-replyto').value  = document.getElementById('f-email').value.trim();
+      document.getElementById('f-services').value = buildServicesFormatted();
+      document.getElementById('f-hours').value    = buildHoursStr();
+      document.getElementById('f-scaffold').value = '\n---\nSCAFFOLD COMMAND:\n' + buildScaffold() + '\n---';
+
+      try {
+        // ← Replace YOUR_FORM_ID with your Formspree form ID
+        var res = await fetch('https://formspree.io/f/mdeoeeon', {
+          method: 'POST',
+          body: new FormData(this),
+          headers: { Accept: 'application/json' },
+        });
+        if (res.ok) {
+          this.style.display = 'none';
+          document.getElementById('success-box').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          throw new Error('non-ok');
+        }
+      } catch (_) {
+        errorBox.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Submit onboarding request →';
+      }
+    });
+  </script>
+</body>
+</html>
