@@ -9,8 +9,8 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #111827;
-      color: #f9fafb;
+      background: #f9f9f9;
+      color: #1a1a1a;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -18,8 +18,8 @@
 
     /* ── Header ── */
     .site-header {
-      background: #1f2937;
-      border-bottom: 1px solid #374151;
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
       padding: 16px 40px;
       display: flex;
       align-items: center;
@@ -32,9 +32,9 @@
       text-decoration: none;
     }
     .site-header img { height: 40px; width: auto; }
-    .site-header .brand { font-size: 1.1rem; font-weight: 600; color: #f9fafb; }
+    .site-header .brand { font-size: 1.1rem; font-weight: 600; color: #1a1a1a; }
     .header-nav { margin-left: auto; display: flex; gap: 20px; align-items: center; }
-    .header-nav a { color: #9ca3af; text-decoration: none; font-size: 0.875rem; transition: color 0.15s; }
+    .header-nav a { color: #888; text-decoration: none; font-size: 0.875rem; transition: color 0.15s; }
     .header-nav a:hover { color: #C8922A; }
 
     /* ── Main ── */
@@ -53,12 +53,12 @@
       line-height: 1.2;
       margin-bottom: 10px;
     }
-    .page-intro p { color: #9ca3af; font-size: 1rem; line-height: 1.65; }
+    .page-intro p { color: #555; font-size: 1rem; line-height: 1.65; }
 
     /* ── Section cards ── */
     .form-section {
-      background: #1f2937;
-      border: 1px solid #374151;
+      background: #fff;
+      border: 1px solid #e5e5e5;
       border-radius: 12px;
       padding: 28px;
       margin-bottom: 20px;
@@ -71,7 +71,7 @@
       color: #C8922A;
       margin-bottom: 20px;
       padding-bottom: 12px;
-      border-bottom: 1px solid #374151;
+      border-bottom: 1px solid #e5e5e5;
     }
 
     /* ── Fields ── */
@@ -81,18 +81,18 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: #9ca3af;
+      color: #555;
     }
-    .opt { font-weight: 400; text-transform: none; letter-spacing: 0; color: #4b5563; font-size: 0.68rem; margin-left: 4px; }
+    .opt { font-weight: 400; text-transform: none; letter-spacing: 0; color: #999; font-size: 0.68rem; margin-left: 4px; }
 
     .field input,
     .field textarea,
     .field select {
-      background: #111827;
-      border: 1px solid #374151;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
       border-radius: 8px;
       padding: 10px 12px;
-      color: #f9fafb;
+      color: #1a1a1a;
       font-size: 0.9rem;
       font-family: inherit;
       width: 100%;
@@ -106,8 +106,8 @@
       box-shadow: 0 0 0 2px rgba(200,146,42,0.15);
     }
     .field input::placeholder,
-    .field textarea::placeholder { color: #374151; }
-    .field select option { background: #1f2937; }
+    .field textarea::placeholder { color: #bbb; }
+    .field select option { background: #fff; }
     .field textarea { resize: vertical; min-height: 90px; }
 
     /* ── Layout helpers ── */
@@ -127,7 +127,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: #4b5563;
+      color: #999;
     }
     .svc-row {
       display: grid;
@@ -137,11 +137,11 @@
       margin-bottom: 10px;
     }
     .svc-row input {
-      background: #111827;
-      border: 1px solid #374151;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
       border-radius: 8px;
       padding: 10px 12px;
-      color: #f9fafb;
+      color: #1a1a1a;
       font-size: 0.9rem;
       font-family: inherit;
       width: 100%;
@@ -152,12 +152,12 @@
       border-color: #C8922A;
       box-shadow: 0 0 0 2px rgba(200,146,42,0.15);
     }
-    .svc-row input::placeholder { color: #374151; }
+    .svc-row input::placeholder { color: #bbb; }
     .svc-remove {
       background: none;
-      border: 1px solid #374151;
+      border: 1px solid #ddd;
       border-radius: 6px;
-      color: #6b7280;
+      color: #999;
       cursor: pointer;
       width: 34px;
       height: 38px;
@@ -169,12 +169,12 @@
       transition: all 0.15s;
     }
     .svc-remove:hover { border-color: #ef4444; color: #ef4444; }
-    .svc-remove:disabled { opacity: 0.25; cursor: default; border-color: #374151; color: #374151; }
+    .svc-remove:disabled { opacity: 0.25; cursor: default; border-color: #e5e5e5; color: #ccc; }
     .add-svc-btn {
       background: none;
-      border: 1px dashed #374151;
+      border: 1px dashed #ccc;
       border-radius: 8px;
-      color: #6b7280;
+      color: #999;
       cursor: pointer;
       padding: 10px;
       width: 100%;
@@ -186,6 +186,80 @@
     }
     .add-svc-btn:hover:not(:disabled) { border-color: #C8922A; color: #C8922A; }
     .add-svc-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ── Testimonials ── */
+    .testi-row {
+      background: #f9f9f9;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+    .testi-row-top {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .testi-name,
+    .testi-source,
+    .testi-quote {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #1a1a1a;
+      font-size: 0.9rem;
+      font-family: inherit;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .testi-name { flex: 1; }
+    .testi-source { width: 150px; flex-shrink: 0; }
+    .testi-name:focus,
+    .testi-source:focus,
+    .testi-quote:focus { outline: none; border-color: #C8922A; box-shadow: 0 0 0 2px rgba(200,146,42,0.15); }
+    .testi-name::placeholder,
+    .testi-source::placeholder,
+    .testi-quote::placeholder { color: #bbb; }
+    .testi-quote { width: 100%; min-height: 70px; resize: vertical; }
+    .testi-remove {
+      background: none;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      color: #999;
+      cursor: pointer;
+      width: 34px;
+      height: 38px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .testi-remove:hover { border-color: #ef4444; color: #ef4444; }
+    .add-testi-btn {
+      background: none;
+      border: 1px dashed #ccc;
+      border-radius: 8px;
+      color: #999;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      font-size: 0.875rem;
+      font-family: inherit;
+      text-align: center;
+      margin-top: 4px;
+      transition: all 0.15s;
+    }
+    .add-testi-btn:hover:not(:disabled) { border-color: #C8922A; color: #C8922A; }
+    .add-testi-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .testi-empty {
+      color: #999;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 4px 0 10px;
+    }
 
     /* ── Hours ── */
     .hours-col-labels {
@@ -199,7 +273,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.07em;
-      color: #4b5563;
+      color: #999;
     }
     .hours-row {
       display: grid;
@@ -208,13 +282,13 @@
       align-items: center;
       margin-bottom: 8px;
     }
-    .hours-row .day-name { font-size: 0.875rem; font-weight: 600; color: #f9fafb; }
+    .hours-row .day-name { font-size: 0.875rem; font-weight: 600; color: #1a1a1a; }
     .closed-lbl {
       display: flex;
       align-items: center;
       gap: 6px;
       font-size: 0.8rem;
-      color: #9ca3af;
+      color: #555;
       cursor: pointer;
       user-select: none;
     }
@@ -225,11 +299,11 @@
       cursor: pointer;
     }
     .hours-row input[type="time"] {
-      background: #111827;
-      border: 1px solid #374151;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
       border-radius: 6px;
       padding: 7px 10px;
-      color: #f9fafb;
+      color: #1a1a1a;
       font-size: 0.85rem;
       font-family: inherit;
       width: 100%;
@@ -237,7 +311,7 @@
     }
     .hours-row input[type="time"]:focus { outline: none; border-color: #C8922A; }
     .hours-row input[type="time"]:disabled { opacity: 0.3; cursor: not-allowed; }
-    .hours-sep { color: #4b5563; text-align: center; font-size: 0.85rem; }
+    .hours-sep { color: #bbb; text-align: center; font-size: 0.85rem; }
 
     /* ── Submit ── */
     .submit-btn {
@@ -260,8 +334,8 @@
 
     /* ── Success / Error ── */
     .success-box {
-      background: #052e16;
-      border: 1px solid #166534;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
       border-radius: 12px;
       padding: 48px 32px;
       text-align: center;
@@ -270,43 +344,43 @@
     .success-icon {
       width: 56px;
       height: 56px;
-      background: #166534;
+      background: #16a34a;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.4rem;
       margin: 0 auto 18px;
-      color: #4ade80;
+      color: #fff;
     }
-    .success-box h2 { font-size: 1.5rem; color: #4ade80; margin-bottom: 10px; }
-    .success-box p { color: #9ca3af; font-size: 0.95rem; line-height: 1.65; }
+    .success-box h2 { font-size: 1.5rem; color: #15803d; margin-bottom: 10px; }
+    .success-box p { color: #555; font-size: 0.95rem; line-height: 1.65; }
 
     .error-box {
-      background: rgba(127,29,29,0.3);
-      border: 1px solid #7f1d1d;
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
       border-radius: 8px;
       padding: 12px 16px;
-      color: #fca5a5;
+      color: #b91c1c;
       font-size: 0.875rem;
       margin-top: 12px;
       display: none;
     }
-    .error-box a { color: #fca5a5; font-weight: 600; }
+    .error-box a { color: #b91c1c; font-weight: 600; }
 
     /* ── Footer ── */
     .site-footer {
-      background: #1f2937;
-      border-top: 1px solid #374151;
+      background: #fff;
+      border-top: 1px solid #e5e5e5;
       padding: 18px 40px;
       display: flex;
       gap: 24px;
       align-items: center;
       font-size: 0.875rem;
     }
-    .site-footer a { color: #9ca3af; text-decoration: none; }
+    .site-footer a { color: #888; text-decoration: none; }
     .site-footer a:hover { color: #C8922A; }
-    .site-footer .copy { margin-left: auto; color: #4b5563; }
+    .site-footer .copy { margin-left: auto; color: #888; }
 
     /* ── Responsive ── */
     @media (max-width: 640px) {
@@ -319,6 +393,8 @@
       .hours-col-labels { display: none; }
       .hours-row { grid-template-columns: 80px 70px 1fr 10px 1fr; gap: 6px; }
       .hours-row .day-name { font-size: 0.8rem; }
+      .testi-row-top { flex-wrap: wrap; }
+      .testi-name { flex-basis: 100%; }
       .site-footer { padding: 18px; flex-wrap: wrap; }
       .site-footer .copy { margin-left: 0; width: 100%; }
     }
@@ -357,6 +433,7 @@
       <input  type="hidden"   name="_replyto"       id="f-replyto"  value="" />
       <textarea               name="Services"       id="f-services" style="display:none"></textarea>
       <textarea               name="Business Hours" id="f-hours"    style="display:none"></textarea>
+      <textarea               name="Testimonials"   id="f-testimonials" style="display:none"></textarea>
       <textarea               name="Scaffold Command" id="f-scaffold" style="display:none"></textarea>
 
       <!-- ── 1 · Business Basics ── -->
@@ -463,6 +540,12 @@
             <textarea id="f-about" name="About" required style="min-height:120px"
               placeholder="Tell us about your business, how long you've been operating, what makes you different."></textarea>
           </div>
+          <div class="field">
+            <label for="f-photos">Photos <span class="opt">(optional — logo, team, storefront, job photos, etc.)</span></label>
+            <input type="url" id="f-photos" name="Photos"
+              placeholder="https://drive.google.com/drive/folders/... (Google Drive, Dropbox, or iCloud share link)" />
+            <span class="opt" style="margin-left:0">Share a folder link with "anyone with the link can view" access — we'll pull the images from there.</span>
+          </div>
         </div>
       </div>
 
@@ -506,9 +589,34 @@
               <input type="url" id="f-facebook" name="Facebook"
                 placeholder="https://facebook.com/yourbusiness" />
             </div>
+            <div class="field">
+              <label for="f-tiktok">TikTok <span class="opt">(optional)</span></label>
+              <input type="url" id="f-tiktok" name="TikTok"
+                placeholder="https://tiktok.com/@yourbusiness" />
+            </div>
+            <div class="field">
+              <label for="f-twitter">Twitter / X <span class="opt">(optional)</span></label>
+              <input type="url" id="f-twitter" name="Twitter"
+                placeholder="https://x.com/yourbusiness" />
+            </div>
+            <div class="field">
+              <label for="f-linkedin">LinkedIn <span class="opt">(optional)</span></label>
+              <input type="url" id="f-linkedin" name="LinkedIn"
+                placeholder="https://linkedin.com/company/yourbusiness" />
+            </div>
           </div>
 
         </div>
+      </div>
+
+      <!-- ── 6 · Testimonials ── -->
+      <div class="form-section">
+        <h2>6 — Testimonials <span class="opt">(optional)</span></h2>
+        <div id="testi-container"></div>
+        <div id="testi-empty" class="testi-empty">No testimonials added yet.</div>
+        <button type="button" id="add-testi-btn" class="add-testi-btn" onclick="addTestimonial()">
+          + Add a testimonial
+        </button>
       </div>
 
       <div id="error-box" class="error-box">
@@ -608,6 +716,46 @@
       document.getElementById('hr-close-' + key).disabled = closed;
     }
 
+    /* ── Testimonials ────────────────────────────────── */
+    const MAX_TESTI = 5;
+    let testiCount = 0;
+
+    function addTestimonial(name, quote, source) {
+      if (testiCount >= MAX_TESTI) return;
+      testiCount++;
+      const row = document.createElement('div');
+      row.className = 'testi-row';
+      row.innerHTML =
+        '<div class="testi-row-top">' +
+          '<input type="text" class="testi-name" placeholder="Customer name" />' +
+          '<input type="text" class="testi-source" placeholder="e.g. Google (optional)" title="Where the review came from, e.g. Google, Yelp, Facebook. Leave blank to default to \'Onsite\'." />' +
+          '<button type="button" class="testi-remove" onclick="removeTestimonial(this)" title="Remove">&#10005;</button>' +
+        '</div>' +
+        '<textarea class="testi-quote" placeholder="What did they say about your business?"></textarea>';
+      if (name)   row.querySelector('.testi-name').value = name;
+      if (quote)  row.querySelector('.testi-quote').value = quote;
+      if (source) row.querySelector('.testi-source').value = source;
+      document.getElementById('testi-container').appendChild(row);
+      syncTestiUI();
+    }
+
+    function removeTestimonial(btn) {
+      btn.closest('.testi-row').remove();
+      testiCount--;
+      syncTestiUI();
+    }
+
+    function syncTestiUI() {
+      document.getElementById('testi-empty').style.display = testiCount === 0 ? 'block' : 'none';
+      const btn = document.getElementById('add-testi-btn');
+      btn.disabled = testiCount >= MAX_TESTI;
+      btn.textContent = testiCount >= MAX_TESTI
+        ? 'Maximum ' + MAX_TESTI + ' testimonials reached'
+        : '+ Add a testimonial' + (testiCount ? ' (' + testiCount + '/' + MAX_TESTI + ')' : '');
+    }
+
+    syncTestiUI();
+
     /* ── Scaffold helpers ────────────────────────────── */
     function shellEsc(str) {
       return String(str || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, ' ').trim();
@@ -672,6 +820,39 @@
       return pairs.join('|');
     }
 
+    function buildTestimonialsFormatted() {
+      var rows = document.querySelectorAll('.testi-row');
+      var lines = [];
+      rows.forEach(function(row, i) {
+        var name   = row.querySelector('.testi-name').value.trim();
+        var quote  = row.querySelector('.testi-quote').value.trim();
+        var source = row.querySelector('.testi-source').value.trim();
+        if (!name && !quote) return;
+        var line = (i + 1) + '. ' + (name || 'Anonymous') + ' (' + (source || 'Onsite') + ')';
+        if (quote) line += ': "' + quote + '"';
+        lines.push(line);
+      });
+      return lines.join('\n');
+    }
+
+    // Flat name|quote[|source] tokens across all testimonials, matching the
+    // scaffold script's --testimonials arg. Source is omitted entirely (not
+    // left as an empty token) when blank, so the scaffold script's own
+    // "Onsite" default applies.
+    function buildTestimonialsArg() {
+      var parts = [];
+      document.querySelectorAll('.testi-row').forEach(function(row) {
+        var name   = row.querySelector('.testi-name').value.trim();
+        var quote  = row.querySelector('.testi-quote').value.trim();
+        var source = row.querySelector('.testi-source').value.trim();
+        if (!name && !quote) return;
+        parts.push(shellEsc(name));
+        parts.push(shellEsc(quote));
+        if (source) parts.push(shellEsc(source));
+      });
+      return parts.join('|');
+    }
+
     function buildScaffold() {
       var name    = document.getElementById('f-biz-name').value;
       var email   = document.getElementById('f-email').value;
@@ -686,11 +867,16 @@
       var heroH1  = document.getElementById('f-hero-h1').value;
       var heroSub = document.getElementById('f-hero-sub').value;
       var about   = document.getElementById('f-about').value;
+      var photos  = document.getElementById('f-photos').value;
       var hours   = buildHoursStr();
       var tz      = document.getElementById('f-tz').value;
       var ig      = document.getElementById('f-instagram').value;
       var fb      = document.getElementById('f-facebook').value;
+      var tiktok  = document.getElementById('f-tiktok').value;
+      var twitter = document.getElementById('f-twitter').value;
+      var linkedin = document.getElementById('f-linkedin').value;
       var svcs    = buildServicesArg();
+      var testis  = buildTestimonialsArg();
 
       return [
         'npm run scaffold -- \\',
@@ -707,10 +893,15 @@
         '  --heroH1 "'     + shellEsc(heroH1)  + '" \\',
         '  --heroSub "'    + shellEsc(heroSub) + '" \\',
         '  --about "'      + shellEsc(about)   + '" \\',
+        '  --photosUrl "'  + shellEsc(photos)  + '" \\',
         '  --hours "'      + hours             + '" \\',
         '  --timezone "'   + tz                + '" \\',
         '  --instagram "'  + shellEsc(ig)      + '" \\',
-        '  --facebook "'   + shellEsc(fb)      + '"',
+        '  --facebook "'   + shellEsc(fb)      + '" \\',
+        '  --tiktok "'     + shellEsc(tiktok)  + '" \\',
+        '  --twitter "'    + shellEsc(twitter) + '" \\',
+        '  --linkedin "'   + shellEsc(linkedin) + '" \\',
+        '  --testimonials "' + testis          + '"',
       ].join('\n');
     }
 
@@ -736,6 +927,7 @@
       document.getElementById('f-replyto').value  = document.getElementById('f-email').value.trim();
       document.getElementById('f-services').value = buildServicesFormatted();
       document.getElementById('f-hours').value    = buildHoursStr();
+      document.getElementById('f-testimonials').value = buildTestimonialsFormatted();
       document.getElementById('f-scaffold').value = '\n---\nSCAFFOLD COMMAND:\n' + buildScaffold() + '\n---';
 
       try {
