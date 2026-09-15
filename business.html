@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Built For The Trades — ID Innovations</title>
+<meta name="description" content="Websites and online marketing built for local trades. Fast, mobile-first sites, online booking, and growth tools to help your business get found and book more jobs." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { -webkit-font-smoothing: antialiased; }
+  img, svg { max-width: 100%; }
+
+  :root {
+    --paper: #faf6ef;
+    --surface: #ffffff;
+    --surface-line: #e8ddc9;
+    --ink: #1c1712;
+    --muted: #6e6154;
+    --gold: #c8922a;
+    --gold-deep: #8f5f12;
+    --gold-wash: #f3e6cc;
+    --font-display: "Archivo", "Arial Black", sans-serif;
+    --font-body: "Inter", -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #17130d;
+      --surface: #221c13;
+      --surface-line: #382e1c;
+      --ink: #f3ecdd;
+      --muted: #b7a98f;
+      --gold: #d9a444;
+      --gold-deep: #f0c274;
+      --gold-wash: #2b2213;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #17130d;
+    --surface: #221c13;
+    --surface-line: #382e1c;
+    --ink: #f3ecdd;
+    --muted: #b7a98f;
+    --gold: #d9a444;
+    --gold-deep: #f0c274;
+    --gold-wash: #2b2213;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 28px; }
+
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+  }
+
+  a { color: var(--gold-deep); }
+
+  /* ── Masthead ─────────────────────────────────────────── */
+  .masthead {
+    padding: 28px 0 0;
+  }
+  .masthead .wrap { display: flex; align-items: center; justify-content: space-between; }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 17px;
+    letter-spacing: 0.02em;
+  }
+  .wordmark span { color: var(--gold); }
+  .masthead .tag { font-size: 13px; color: var(--muted); }
+
+  /* ── Hero ─────────────────────────────────────────────── */
+  .hero { padding: 56px 0 72px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: clamp(34px, 4.6vw, 54px);
+    line-height: 1.05;
+    font-weight: 900;
+    margin-top: 14px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .hero p.lede {
+    margin-top: 20px;
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 46ch;
+  }
+  .hero-cta {
+    margin-top: 30px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 26px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 2px solid transparent;
+  }
+  .btn-gold { background: var(--gold); color: #1c1712; }
+  .btn-gold:hover { background: var(--gold-deep); color: #fff; }
+  .btn-ghost { border-color: var(--surface-line); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--gold); }
+  .hero-note { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* Phone mock — the "hero is a thesis" device */
+  .phone {
+    justify-self: center;
+    width: 260px;
+    background: var(--surface);
+    border: 1px solid var(--surface-line);
+    border-radius: 28px;
+    padding: 14px 14px 20px;
+    box-shadow: 0 24px 60px -24px rgba(28, 23, 18, 0.35);
+  }
+  .phone-notch { width: 60px; height: 6px; border-radius: 4px; background: var(--surface-line); margin: 0 auto 14px; }
+  .phone-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--paper);
+    border: 1px solid var(--surface-line);
+    border-radius: 20px;
+    padding: 9px 14px;
+    font-size: 12.5px;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .phone-search svg { flex-shrink: 0; opacity: 0.55; }
+  .phone-result {
+    border-top: 1px solid var(--surface-line);
+    padding: 13px 2px;
+  }
+  .phone-result:first-of-type { border-top: none; }
+  .phone-result .biz {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-weight: 700;
+    font-size: 13.5px;
+  }
+  .phone-result.you .biz { color: var(--gold-deep); }
+  .phone-result .stars { color: var(--gold); font-size: 11px; letter-spacing: 1px; }
+  .phone-result .meta { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+  .phone-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--gold-wash);
+    color: var(--gold-deep);
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin-top: 6px;
+  }
+
+  /* ── Section rhythm ───────────────────────────────────── */
+  section { padding: 64px 0; border-top: 1px solid var(--surface-line); }
+  section > .wrap > .eyebrow { display: block; margin-bottom: 10px; }
+  section h2 {
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 800;
+    max-width: 20ch;
+  }
+  section p.lede {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 60ch;
+    margin-top: 14px;
+  }
+
+  /* ── Pain points ──────────────────────────────────────── */
+  .pain-grid {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .pain-card {
+    background: var(--surface);
+    border: 1px solid var(--surface-line);
+    border-radius: 12px;
+    padding: 24px 22px;
+  }
+  .pain-card .num {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+  .pain-card h3 { font-size: 17px; font-weight: 800; margin-top: 10px; }
+  .pain-card p { font-size: 14.5px; color: var(--muted); margin-top: 8px; }
+
+  /* ── Tier 1 deliverable list ──────────────────────────── */
+  .tier1-panel {
+    margin-top: 36px;
+    background: var(--surface);
+    border: 1px solid var(--surface-line);
+    border-radius: 16px;
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 34px;
+  }
+  .checklist { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
+  .checklist li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; }
+  .checklist .tick {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--gold-wash);
+    color: var(--gold-deep);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 900;
+    margin-top: 1px;
+  }
+  .checklist strong { display: block; }
+  .checklist span.desc { color: var(--muted); font-size: 13.5px; }
+  .tier1-price {
+    border-left: 1px solid var(--surface-line);
+    padding-left: 34px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .tier1-price .eyebrow { margin-bottom: 8px; }
+  .tier1-price .big { font-family: var(--font-display); font-weight: 900; font-size: 30px; line-height: 1.15; }
+  .tier1-price p { color: var(--muted); font-size: 14px; margin-top: 10px; }
+
+  /* ── Speed proof (chart) ──────────────────────────────── */
+  .speed-proof {
+    margin-top: 28px;
+    background: var(--surface);
+    border: 1px solid var(--surface-line);
+    border-radius: 16px;
+    padding: 36px;
+  }
+  .speed-head h3 {
+    font-size: 21px;
+    font-weight: 800;
+    max-width: 34ch;
+    margin-top: 8px;
+  }
+  .speed-head p {
+    color: var(--muted);
+    font-size: 14.5px;
+    max-width: 62ch;
+    margin-top: 10px;
+  }
+  .speed-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 24px 0 30px;
+  }
+  .speed-stat {
+    background: var(--gold-wash);
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .speed-stat .big {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 32px;
+    color: var(--gold-deep);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .speed-stat .label { font-size: 13px; color: var(--ink); margin-top: 6px; }
+
+  .speed-chart {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .speed-panel-title {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .bar-row { display: grid; grid-template-columns: 84px 1fr 30px; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .bar-row:last-child { margin-bottom: 0; }
+  .bar-label { font-size: 12.5px; color: var(--muted); }
+  .bar-row.you .bar-label { color: var(--ink); font-weight: 700; }
+  .bar-track { position: relative; height: 15px; background: var(--surface-line); border-radius: 8px; overflow: hidden; }
+  .bar-fill { position: absolute; inset: 0; width: 0; border-radius: 8px; background: var(--muted); opacity: 0.55; }
+  .bar-row.you .bar-fill { background: var(--gold); opacity: 1; }
+  .bar-value { font-size: 12.5px; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+  .bar-row.you .bar-value { color: var(--gold-deep); }
+  .speed-scale { display: flex; justify-content: space-between; margin: 8px 0 0 94px; font-size: 10.5px; color: var(--muted); opacity: 0.7; }
+  .speed-source { font-size: 12px; color: var(--muted); margin-top: 22px; opacity: 0.8; }
+
+  /* ── Growth path ──────────────────────────────────────── */
+  .path { margin-top: 44px; position: relative; }
+  .path-track {
+    position: absolute;
+    left: 27px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(var(--gold), var(--surface-line));
+    opacity: 0.5;
+  }
+  .stage { display: grid; grid-template-columns: 56px 1fr; gap: 26px; margin-bottom: 40px; position: relative; }
+  .stage:last-child { margin-bottom: 0; }
+  .stage-marker {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--gold-deep);
+    z-index: 1;
+  }
+  .stage.included .stage-marker { background: var(--gold); color: #1c1712; }
+  .stage-body {
+    background: var(--surface);
+    border: 1px solid var(--surface-line);
+    border-radius: 14px;
+    padding: 26px 28px;
+  }
+  .stage-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .stage-head h3 { font-size: 20px; font-weight: 800; }
+  .stage-price { font-family: var(--font-display); font-weight: 800; font-size: 15px; color: var(--gold-deep); white-space: nowrap; }
+  .stage-included-pill {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    background: var(--gold-wash);
+    padding: 3px 9px;
+    border-radius: 5px;
+  }
+  .stage-desc { color: var(--muted); font-size: 14.5px; margin-top: 8px; max-width: 62ch; }
+  .feature-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+  }
+  .feature {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 14px;
+  }
+  .feature .icon { font-size: 17px; line-height: 1.3; }
+  .feature strong { display: block; font-size: 14px; }
+  .feature span.d { color: var(--muted); font-size: 13px; }
+
+  /* ── Close ────────────────────────────────────────────── */
+  .close { text-align: center; }
+  .close h2 { max-width: none; margin: 0 auto; }
+  .close p.lede { margin-left: auto; margin-right: auto; }
+  .close .hero-cta { justify-content: center; margin-top: 28px; }
+  footer { padding: 30px 0 50px; text-align: center; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 760px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .phone { justify-self: start; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .tier1-panel { grid-template-columns: 1fr; }
+    .tier1-price { border-left: none; padding-left: 0; border-top: 1px solid var(--surface-line); padding-top: 24px; }
+    .speed-proof { padding: 26px 22px; }
+    .speed-stats { grid-template-columns: 1fr; }
+    .speed-chart { grid-template-columns: 1fr; gap: 26px; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .stage { grid-template-columns: 44px 1fr; gap: 16px; }
+    .stage-marker { width: 44px; height: 44px; font-size: 16px; }
+    .path-track { left: 21px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="wordmark">ID <span>Innovations</span></div>
+    <div class="tag">Websites &amp; online marketing for local trades</div>
+  </div>
+</header>
+
+<section class="hero" style="border-top:none;">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">New client proposal</span>
+      <h1>When someone needs your services <em>tonight</em>, can your business be found?</h1>
+      <p class="lede">
+        Right now, most of your next customers are standing in their kitchen with a phone in
+        their hand, searching for someone exactly like you. If your business isn't the one
+        they find — clean, fast, and easy to call — they're booking your competitor instead.
+        That's the job a website does for you every hour of every day, whether you're on a
+        ladder or asleep.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#tier1">See what's included →</a>
+        <a class="btn btn-ghost" href="#contact">Get a quote</a>
+      </div>
+      <div class="hero-note">No obligation — we'll walk you through it in plain English.</div>
+    </div>
+
+    <div class="phone" aria-hidden="true">
+      <div class="phone-notch"></div>
+      <div class="phone-search">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        emergency plumber near me
+      </div>
+      <div class="phone-result you">
+        <div class="biz">Smith Plumbing <span class="stars">★★★★★</span></div>
+        <div class="meta">4.9 (128) · Open 24 hours · 1.2 mi</div>
+        <span class="phone-badge">Your business</span>
+      </div>
+      <div class="phone-result">
+        <div class="biz" style="color:var(--muted)">A-1 Rapid Plumbing</div>
+        <div class="meta">3.8 (19) · Closed · 4.6 mi</div>
+      </div>
+      <div class="phone-result">
+        <div class="biz" style="color:var(--muted)">Budget Drain Co.</div>
+        <div class="meta">4.1 (7) · Hours unknown · 6.0 mi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pain">
+  <div class="wrap">
+    <span class="eyebrow">Why it matters</span>
+    <h2>Your reputation is already online. The question is whether anyone can find it.</h2>
+    <p class="lede">
+      You already do great work — that's not in question. What's in question is whether a
+      stranger searching for your trade at 9pm on a Tuesday can find you, trust you, and
+      reach you in under ten seconds. Most local businesses lose jobs here without ever
+      knowing it happened.
+    </p>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="num">01</div>
+        <h3>No site, no shot</h3>
+        <p>If you're not on Google, you don't exist to someone searching. They don't call around — they click whoever they find first.</p>
+      </div>
+      <div class="pain-card">
+        <div class="num">02</div>
+        <h3>An old site costs you jobs</h3>
+        <p>A slow, dated, or broken-on-phone site tells a customer you might run your business the same way. They bounce to the next name.</p>
+      </div>
+      <div class="pain-card">
+        <div class="num">03</div>
+        <h3>Word of mouth only goes so far</h3>
+        <p>Referrals are great, but they don't scale past the people who already know you. A website works your whole service area, all the time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tier1">
+  <div class="wrap">
+    <span class="eyebrow">Tier 1 — the foundation</span>
+    <h2>A real website, built for your trade, done right the first time.</h2>
+    <p class="lede">
+      This is where every client starts, and it's a complete, professional website — not a
+      placeholder you'll need to redo later. It's built to load fast, look right on a phone
+      (where most of your customers will find you), and quietly start collecting data from
+      day one, so if you ever want to grow into the tools below, you're not starting from zero.
+    </p>
+
+    <div class="tier1-panel">
+      <ul class="checklist">
+        <li>
+          <span class="tick">✓</span>
+          <div><strong>A custom site built around your business</strong><span class="desc">Your services, your service area, your story — not a generic template with your name swapped in.</span></div>
+        </li>
+        <li>
+          <span class="tick">✓</span>
+          <div><strong>Built genuinely fast, not "fast enough"</strong><span class="desc">Most of your customers will find you mid-search on their phone. See the real speed test results below.</span></div>
+        </li>
+        <li>
+          <span class="tick">✓</span>
+          <div><strong>Built to be found on Google</strong><span class="desc">Set up correctly from day one so search engines can actually find and understand your business.</span></div>
+        </li>
+        <li>
+          <span class="tick">✓</span>
+          <div><strong>Online booking built in</strong><span class="desc">Customers can schedule directly from your site, synced straight to your calendar.</span></div>
+        </li>
+        <li>
+          <span class="tick">✓</span>
+          <div><strong>Quietly tracking from day one</strong><span class="desc">Visitor data starts building in the background, so months of history are already there the moment you're ready to see it.</span></div>
+        </li>
+        <li>
+          <span class="tick">✓</span>
+          <div><strong>Hosted and kept running</strong><span class="desc">You don't touch a thing — we build it, launch it, and keep it live.</span></div>
+        </li>
+      </ul>
+
+      <div class="tier1-price">
+        <span class="eyebrow">Getting started</span>
+        <div class="big">A straightforward quote.<br>No subscription required.</div>
+        <p>We build the site first, then send one invoice for the build — no monthly commitment to just have a website. Any updates you need after that — new photos, new services, a change of hours — are free, always. Everything below is optional, whenever you're ready for it.</p>
+      </div>
+    </div>
+
+    <div class="speed-proof">
+      <div class="speed-head">
+        <span class="eyebrow">Tested, not just claimed</span>
+        <h3>99/100 on mobile — checked with Google's own speed test, not a guess.</h3>
+        <p>
+          We ran our sites against real WordPress and Squarespace sites — the two most common
+          ways small businesses build a website — through
+          <a href="https://pagespeed.web.dev" target="_blank" rel="noopener">Google PageSpeed
+          Insights</a>, the same public tool Google uses to score how a page performs. The gap
+          wasn't close, especially on mobile, where most of your customers will actually find you.
+        </p>
+      </div>
+
+      <div class="speed-stats">
+        <div class="speed-stat">
+          <div class="big">+62%</div>
+          <div class="label">higher mobile speed score than a typical WordPress site</div>
+        </div>
+        <div class="speed-stat">
+          <div class="big">+115%</div>
+          <div class="label">higher mobile speed score than a typical Squarespace site</div>
+        </div>
+      </div>
+
+      <div class="speed-chart">
+        <div>
+          <div class="speed-panel-title">Mobile speed score</div>
+          <div class="bar-row you">
+            <div class="bar-label">Your Site</div>
+            <div class="bar-track"><div class="bar-fill" style="width:99%"></div></div>
+            <div class="bar-value">99</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">WordPress</div>
+            <div class="bar-track"><div class="bar-fill" style="width:61%"></div></div>
+            <div class="bar-value">61</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Squarespace</div>
+            <div class="bar-track"><div class="bar-fill" style="width:46%"></div></div>
+            <div class="bar-value">46</div>
+          </div>
+          <div class="speed-scale"><span>0</span><span>100</span></div>
+        </div>
+
+        <div>
+          <div class="speed-panel-title">Desktop speed score</div>
+          <div class="bar-row you">
+            <div class="bar-label">Your Site</div>
+            <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+            <div class="bar-value">100</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">WordPress</div>
+            <div class="bar-track"><div class="bar-fill" style="width:92%"></div></div>
+            <div class="bar-value">92</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Squarespace</div>
+            <div class="bar-track"><div class="bar-fill" style="width:61%"></div></div>
+            <div class="bar-value">61</div>
+          </div>
+          <div class="speed-scale"><span>0</span><span>100</span></div>
+        </div>
+      </div>
+
+      <p class="speed-source">
+        Why this matters: Google directly factors page speed into how a site ranks —
+        especially on mobile, which is where most local searches happen. A slower site doesn't
+        just feel worse to a visitor, it can get buried below faster competitors before a
+        customer ever sees your name. Scores measured with Google PageSpeed Insights
+        (pagespeed.web.dev).
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="growth">
+  <div class="wrap">
+    <span class="eyebrow">When you're ready for more jobs, not just a website</span>
+    <h2>Your growth path, whenever you want to take the next step.</h2>
+    <p class="lede">
+      There's no pressure to upgrade — plenty of clients are happy with a great website and
+      nothing more. But once your website is live, these two tiers turn it from a digital
+      business card into an active source of new jobs, running in the background while you're
+      out on calls.
+    </p>
+
+    <div class="path">
+      <div class="path-track"></div>
+
+      <div class="stage included">
+        <div class="stage-marker">1</div>
+        <div class="stage-body">
+          <div class="stage-head">
+            <h3>Website</h3>
+            <span class="stage-included-pill">You start here</span>
+          </div>
+          <p class="stage-desc">Your professional site, live and working for you. Covered above.</p>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="stage-marker">2</div>
+        <div class="stage-body">
+          <div class="stage-head">
+            <h3>See what's working</h3>
+            <span class="stage-price">$250/mo</span>
+          </div>
+          <p class="stage-desc">
+            Unlocks your own dashboard — instead of wondering whether the website is doing
+            anything, you'll see exactly who's visiting, who's calling, and who's booking.
+          </p>
+          <div class="feature-grid">
+            <div class="feature"><span class="icon">📊</span><div><strong>See everything in one place</strong><span class="d">Visitors, new inquiries, and phone calls, updated as they happen.</span></div></div>
+            <div class="feature"><span class="icon">📞</span><div><strong>Never miss a new customer</strong><span class="d">Every contact form and phone call in one list — know what's actually bringing in business.</span></div></div>
+            <div class="feature"><span class="icon">📅</span><div><strong>Let customers book online</strong><span class="d">Appointments go straight to your Google Calendar, day or night.</span></div></div>
+            <div class="feature"><span class="icon">📧</span><div><strong>Email your customer list</strong><span class="d">Send a message to past customers and leads right from your dashboard.</span></div></div>
+            <div class="feature"><span class="icon">🗺️</span><div><strong>Manage your Google listing</strong><span class="d">The one with your map pin, hours, and reviews — updated without extra logins.</span></div></div>
+            <div class="feature"><span class="icon">🔍</span><div><strong>See how people find you</strong><span class="d">Know exactly what people searched before landing on your site.</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="stage-marker">3</div>
+        <div class="stage-body">
+          <div class="stage-head">
+            <h3>Get more jobs, on autopilot</h3>
+            <span class="stage-price">$1,000/mo</span>
+          </div>
+          <p class="stage-desc">
+            This is what a full marketing agency does for its clients — an ad buyer running
+            your search and retargeting campaigns, an SEO specialist, a social media manager
+            posting to your Google listing, someone chasing down reviews — except it's all
+            running for you automatically, every week, at a fraction of what hiring an agency
+            (or even one of those specialists) would cost on its own.
+          </p>
+          <div class="feature-grid">
+            <div class="feature"><span class="icon">🔍</span><div><strong>Show up higher on Google</strong><span class="d">Ongoing improvements so people searching nearby find you before your competitors.</span></div></div>
+            <div class="feature"><span class="icon">📣</span><div><strong>Google search ads, written for you</strong><span class="d">Ads that show up the moment someone nearby searches for what you do. You approve everything first.</span></div></div>
+            <div class="feature"><span class="icon">🎬</span><div><strong>Photo &amp; video ads around your area</strong><span class="d">Send your photos, we turn them into ads people see on websites and YouTube nearby.</span></div></div>
+            <div class="feature"><span class="icon">🔁</span><div><strong>We follow up so you don't have to</strong><span class="d">Anyone who reaches out but doesn't book gets a friendly reminder, automatically.</span></div></div>
+            <div class="feature"><span class="icon">📍</span><div><strong>We keep your Google listing fresh</strong><span class="d">Regular posts, photos, and review management — done for you, every week.</span></div></div>
+            <div class="feature"><span class="icon">⭐</span><div><strong>We ask happy customers for reviews</strong><span class="d">Every finished job turns into a chance at a new 5-star review, automatically.</span></div></div>
+            <div class="feature"><span class="icon">🎯</span><div><strong>Bring back visitors who didn't call</strong><span class="d">A gentle reminder ad for people who checked out your site but left without reaching out.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="close">
+  <div class="wrap">
+    <span class="eyebrow">Ready when you are</span>
+    <h2>Let's get your business found.</h2>
+    <p class="lede">
+      Start with the website — grow into the rest whenever it makes sense for you. Reply to
+      this email or reach out below and we'll put together a straightforward quote.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="onboarding.html">Start your onboarding form →</a>
+    </div>
+  </div>
+</section>
+
+<footer>ID Innovations — websites &amp; online marketing built for local service businesses.</footer>
+
+</body>
+</html>
