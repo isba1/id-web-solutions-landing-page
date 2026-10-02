@@ -465,8 +465,8 @@
             </div>
           </div>
           <div class="field">
-            <label for="f-domain">Website Domain *</label>
-            <input type="text" id="f-domain" name="Domain" required
+            <label for="f-domain">Website Domain <span class="opt">(optional — leave blank if you don't have one yet)</span></label>
+            <input type="text" id="f-domain" name="Domain"
               placeholder="e.g. smithplumbing.com — no https://" />
           </div>
         </div>
@@ -861,7 +861,7 @@
       var city    = document.getElementById('f-city').value;
       var state   = document.getElementById('f-state').value;
       var zip     = document.getElementById('f-zip').value;
-      var domain  = document.getElementById('f-domain').value
+      var domain  = document.getElementById('f-domain').value.trim()
                       .replace(/^https?:\/\//i, '').replace(/\/+$/, '');
       var areas   = parseAreas(document.getElementById('f-areas').value);
       var heroH1  = document.getElementById('f-hero-h1').value;
